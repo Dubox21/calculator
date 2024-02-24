@@ -1,7 +1,11 @@
 import React from 'react';
+import styles from './Display.css';
 
-function Display() {
- 
+export default function Display ({ value }) {
+    return (
+        <div>
+            <div className={styles.value}>{value}</div>
+        </div>
+    );
 }
 
-export default Display;
