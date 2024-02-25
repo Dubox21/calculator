@@ -7,5 +7,7 @@ export default function Operators(numberOne, numberTwo, operator) {
     if (operator === "+") return one.plus(two).toString();
     if (operator === "-") return one.minus(two).toString();
     if (operator === "X") return one.times(two).toString();
-    if (operator === "/") return one.div(two).toString();
+    if (operator === "/") if (two == 0) {
+        alert("No")
+    } else if (operator === "/") return one.div(two).toString();
 }

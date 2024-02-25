@@ -1,5 +1,16 @@
 :root{
   --colorPrimary: #201C1C;
+  --orange: #FF8F17;
+  --grey: #6C6967;
+  --greyDark: #3D3B39;
+  --greyLight: #87827E;
+  --greyExtraLight: #D8D3CD;
+  --orangeLight: #FFC88E;
+} 
+
+html{
+  height: 100%;
+  font-size: 10px;
 }
 
 body {
@@ -8,7 +19,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
- /* background-color: var(--colorPrimary);*/
+  background-color: var(--colorPrimary);
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 code {
