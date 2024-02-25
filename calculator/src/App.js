@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import './App.css';
 import Display from './Components/Display';
+import PanelButton from './Components/PanelButton';
+import Operations from './Logic/Operations';
 
 class App extends Component {
   state = {
@@ -9,11 +11,13 @@ class App extends Component {
     operator: null
   }
 
+  handleClick = nameButton => this.setState(Operations(this.state, nameButton));
+
   render() {
     return (
       <div>
-        <h1>prueba</h1>
         <Display value={this.state.next || this.state.total || "0"} />
+        <PanelButton clickHandle={this.handleClick} />
       </div>
     );
   }
