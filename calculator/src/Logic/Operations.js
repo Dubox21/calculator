@@ -9,25 +9,16 @@ export default function Operations(state, nameButton) {
     }
 
     if (nameButton === "%") {
-        if (state.operator && state.next) {
-            const percentage = calculatePercentage(parseFloat(state.total), parseFloat(state.next));
-            return {
-                // total: percentage,
-                percentageResult: percentage, // Almacena el resultado del porcentaje
-                next: null,
-                operator: null,
-            };
-        }
         if (state.next) {
             const percentage = calculatePercentage(parseFloat(state.total), parseFloat(state.next)); // Calcula el porcentaje del total
             return {
-                next: percentage.toString(),
+                next: percentage.toString(), //muestra el porcenjate de un numero
             };
         }
         return {};
     }
 
-    if (nameButton === "=" && state.percentageResult) { // Verifica si se ha presionado "=" y si hay un operador y un resultado del porcentaje
+    if (nameButton === "=" && state.percentageResult) { // Verifica si se ha presionado "=" y si hay un resultado del porcentaje
         const totalWithPercentage = parseFloat(state.total) + parseFloat(state.percentageResult);
         return {
             total: totalWithPercentage,
@@ -59,27 +50,6 @@ export default function Operations(state, nameButton) {
         }
         return { next: nameButton, total: null } //next contendrá el valor de nameButton, total: Esta propiedad se establece en null. Esto significa que total no contiene ningún valor en este momento
     }
-
-    /*if (nameButton === "%") {
-        if (state.operator && state.next) {
-            const result = Operators(state.total, state.next, state.operator);
-            const percentage = (result * percentage) / 100; // Aquí calculamos el porcentaje del resultado de la operación
-            const totalWithPercentage = Big(result).plus(percentage).toString(); // Aquí sumamos el porcentaje al resultado de la operación
-            return {
-                total: totalWithPercentage,
-                next: null,
-                operator: null,
-            };
-        }
-        if (state.next) {
-            const percentage = Big(state.next).div(Big("100")).toString();
-            return {
-                next: percentage,
-            };
-        }
-        return {};
-    }*/
-
 
     if (nameButton === ".") {
         if (state.next) {
