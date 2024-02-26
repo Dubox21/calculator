@@ -1,16 +1,58 @@
-.component-calculator{
+.component-calculator {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding: 40px 200px;
-  margin-left: 400px;
-  margin-right: 400px;
+  padding: 40px;
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
 .container-calculator {
   background: #000;
   padding: 20px;
   border-radius: 32px;
+}
+
+/* Media queries para pantallas de 368px */
+@media (max-width: 368px) {
+  .component-calculator {
+    padding: 20px;
+  }
+}
+
+/* Media queries para pantallas de 768px */
+@media (min-width: 369px) and (max-width: 767px) {
+  .component-calculator {
+    padding: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .component-calculator {
+    padding: 50px;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+}
+
+/* Media queries para pantallas de 1024px */
+@media (min-width: 1024px) {
+  .component-calculator {
+    padding: 40px 200px;
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+
+  @media (min-width: 1600px) {
+    .component-calculator {
+      padding: 40px 200px;
+      margin-left: 400px;
+      margin-right: 400px;
+    }
+  }
 }

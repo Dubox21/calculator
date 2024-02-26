@@ -12,3 +12,17 @@
     width: 100%;
     margin-bottom: 1px;
 }
+
+/* Media queries para pantallas de 768px */
+@media (min-width: 768px) {
+    .component-button-panel {
+        padding: 8px;
+    }
+}
+
+/* Media queries para pantallas de 1024px */
+@media (min-width: 1024px) {
+    .component-button-panel > div {
+        width: 100%;
+    }
+}
