@@ -1,5 +1,4 @@
 .component-display{
-    background: #000;
     color: #fff;
     text-align: right;
     padding: 15px 10px;
@@ -7,7 +6,6 @@
 }
 
 .component-display > div{
-    font-size: 70px;
-    font-weight: bold;
-    /* margin-right: 10px; */
+    font-size: 100px;
+    margin-right: 10px;
 }

@@ -8,11 +8,6 @@
   --orangeLight: #FFC88E;
 } 
 
-html{
-  height: 100%;
-  font-size: 10px;
-}
-
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -20,9 +15,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--colorPrimary);
-  margin: 0;
-  padding: 0;
-  height: 100%;
+
 }
 
 code {
