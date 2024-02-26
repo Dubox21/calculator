@@ -4,6 +4,39 @@ import isNumber from './isNumber';
 
 export default function Operations(state, nameButton) {
 
+    function calculatePercentage(total, percentage) {
+        return (total * percentage) / 100;
+    }
+
+    if (nameButton === "%") {
+        if (state.operator && state.next) {
+            const percentage = calculatePercentage(parseFloat(state.total), parseFloat(state.next));
+            return {
+                // total: percentage,
+                percentageResult: percentage, // Almacena el resultado del porcentaje
+                next: null,
+                operator: null,
+            };
+        }
+        if (state.next) {
+            const percentage = calculatePercentage(parseFloat(state.total), parseFloat(state.next)); // Calcula el porcentaje del total
+            return {
+                next: percentage.toString(),
+            };
+        }
+        return {};
+    }
+
+    if (nameButton === "=" && state.percentageResult) { // Verifica si se ha presionado "=" y si hay un operador y un resultado del porcentaje
+        const totalWithPercentage = parseFloat(state.total) + parseFloat(state.percentageResult);
+        return {
+            total: totalWithPercentage,
+            next: null,
+            operator: null,
+            percentageResult: null, // Restablece el resultado del porcentaje después de la suma
+        };
+    }
+
     if (nameButton === "AC") { //para reiniciar el value
         return {
             total: null,
@@ -27,27 +60,26 @@ export default function Operations(state, nameButton) {
         return { next: nameButton, total: null } //next contendrá el valor de nameButton, total: Esta propiedad se establece en null. Esto significa que total no contiene ningún valor en este momento
     }
 
-    if (nameButton === "%") { //Esta línea verifica si el botón presionado es el botón de porcentaje "%".
-
-        if (state.operator && state.next) { //verifica si ya hay un operador seleccionado (state.operator) y si también hay un número ingresado (state.next).
-
-            const result = Operators(state.total, state.next, state.operator) //Si ambas condiciones se cumplen, se calcula el resultado de la operación utilizando la función Operators con los valores presentes
-            const percentage = Big(result).div(Big("100")).toFixed(0); //Después de obtener el resultado de la operación, se calcula el porcentaje dividiendo el resultado entre 100 utilizando Big.js
-            const totalWithPercentage = Big(state.total).plus(percentage).toFixed(0); //Finalmente, se suma el porcentaje al total actual. Se utiliza Big.js para crear un objeto Big con el total actual (state.total), luego se le suma el porcentaje calculado en el paso anterior utilizando el método plus() de Big.js
-
+    /*if (nameButton === "%") {
+        if (state.operator && state.next) {
+            const result = Operators(state.total, state.next, state.operator);
+            const percentage = (result * percentage) / 100; // Aquí calculamos el porcentaje del resultado de la operación
+            const totalWithPercentage = Big(result).plus(percentage).toString(); // Aquí sumamos el porcentaje al resultado de la operación
             return {
-                total: totalWithPercentage, //El resultado de la operación se divide por 100 utilizando Big("100") para obtener el porcentaje del resultado, y luego se convierte a una cadena de texto utilizando toString(). Este valor se asigna a total
+                total: totalWithPercentage,
                 next: null,
                 operator: null,
-            }
-        } if (state.next) { // verifica si hay un valor válido en state.next
-            return {
-                next: Big(state.next).div(Big("100")).toString(),
-            }
+            };
         }
+        if (state.next) {
+            const percentage = Big(state.next).div(Big("100")).toString();
+            return {
+                next: percentage,
+            };
+        }
+        return {};
+    }*/
 
-        return {};  //si no hay un valor válido en state.next, se devuelve un objeto vacío {}
-    }
 
     if (nameButton === ".") {
         if (state.next) {

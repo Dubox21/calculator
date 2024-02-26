@@ -8,7 +8,8 @@ class App extends Component {
   state = {
     total: null,
     next: null,
-    operator: null
+    operator: null,
+    percentageResult: null
   }
 
   handleClick = nameButton => this.setState(Operations(this.state, nameButton));
@@ -17,7 +18,7 @@ class App extends Component {
     return (
       <div className='component-calculator'>
         <div className='container-calculator'>
-        <Display value={this.state.next || this.state.total || "0"} />
+        <Display value={this.state.next || this.state.total || this.state.percentageResult || "0"} />
         <PanelButton clickHandle={this.handleClick} />
         </div>
       </div>
