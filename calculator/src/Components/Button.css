@@ -25,6 +25,7 @@ Button{
 
 .component-button.wide {
     width: 42%;
+    text-align: left !important;
 }
 
 .component-button button {

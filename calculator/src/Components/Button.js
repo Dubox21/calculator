@@ -12,9 +12,11 @@ export default function Button({ clickHandle, name, grey, orange, wide, green })
         grey ? "grey" : "",
     ]
 
+    const buttonStyle = name === '0' ? { textAlign: 'left', paddingLeft: '30px' } : {};
+
     return (
         <div className={className.join(" ").trim()}>
-            <button className='btn' onClick={handleClick}>{name}</button>
+            <button className='btn' style={buttonStyle} onClick={handleClick}>{name}</button>
         </div>
     )
 }

@@ -13,6 +13,10 @@
     margin-bottom: 1px;
 }
 
+.btn-left{
+    justify-content: start;
+}
+
 /* Media queries para pantallas de 768px */
 @media (min-width: 768px) {
     .component-button-panel {
