@@ -8,26 +8,6 @@ export default function Operations(state, nameButton) {
         return (total * percentage) / 100;
     }
 
-    if (nameButton === "%") {
-        if (state.next) {
-            const percentage = calculatePercentage(parseFloat(state.total), parseFloat(state.next)); // Calcula el porcentaje del total
-            return {
-                next: percentage.toString(), //muestra el porcenjate de un numero
-            };
-        }
-        return {};
-    }
-
-    if (nameButton === "=" && state.percentageResult) { // Verifica si se ha presionado "=" y si hay un resultado del porcentaje
-        const totalWithPercentage = parseFloat(state.total) + parseFloat(state.percentageResult);
-        return {
-            total: totalWithPercentage,
-            next: null,
-            operator: null,
-            percentageResult: null, // Restablece el resultado del porcentaje después de la suma
-        };
-    }
-
     if (nameButton === "AC") { //para reiniciar el value
         return {
             total: null,
@@ -49,6 +29,23 @@ export default function Operations(state, nameButton) {
             return { next, total: null }
         }
         return { next: nameButton, total: null } //next contendrá el valor de nameButton, total: Esta propiedad se establece en null. Esto significa que total no contiene ningún valor en este momento
+    }
+
+    if (nameButton === "%") {
+        if (!isNaN(parseFloat(state.total)) && !isNaN(parseFloat(state.next))) {
+            const percentage = calculatePercentage(parseFloat(state.total), parseFloat(state.next));
+            return {
+                next: percentage.toString(),
+            };
+        } if (state.next) { 
+            return {
+                next: {
+                    message: "No es posible el cálculo",
+                    className: "errorMessage"
+                }
+            };
+        }
+        return {};
     }
 
     if (nameButton === ".") {

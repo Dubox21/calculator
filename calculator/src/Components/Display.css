@@ -1,13 +1,38 @@
 .component-display{
     color: #fff;
     text-align: right;
-    padding: 15px 10px;
+    padding: 9px 10px;
     width: 100%;
+    overflow: hidden; /* Oculta el contenido que desborda el contenedor */
+    white-space: nowrap;
 }
 
 .component-display > div{
     font-size: 100px;
     margin-right: 10px;
+    overflow-x: auto; /* Oculta el contenido que desborda el contenedor */
+    white-space: nowrap; /* Evita que el texto se divida en múltiples líneas */
+}
+
+/* Estilo para la barra de desplazamiento */
+.component-display > div::-webkit-scrollbar {
+    width: 5px; /* Ancho de la barra de desplazamiento */
+    height: 5px; /* Altura de la barra de desplazamiento */
+}
+
+/* Estilo para el área de la barra de desplazamiento */
+.component-display > div::-webkit-scrollbar-thumb {
+    background-color: var(--grey); /* Color de fondo de la barra de desplazamiento */
+    border-radius: 10px; /* Radio de borde de la barra de desplazamiento */
+}
+
+.errorMessage {
+    color: red;
+    font-weight: bold;
+    font-size: 45px;
+    text-align: right;
+    padding: 15px 10px;
+    width: 100%;
 }
 
 /* Media queries para pantallas de 368px */

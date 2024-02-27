@@ -15,13 +15,18 @@ class App extends Component {
   handleClick = nameButton => this.setState(Operations(this.state, nameButton));
 
   render() {
+    const next = this.state.next;
     return (
-      <div className='component-calculator'>
-        <div className='container-calculator'>
-        <Display value={this.state.next || this.state.total || this.state.percentageResult || "0"} />
-        <PanelButton clickHandle={this.handleClick} />
+        <div className='component-calculator'>
+            <div className='container-calculator'>
+                {next && typeof next === "object" ? (
+                    <div className={next.className}>{next.message}</div>
+                ) : (
+                    <Display value={next || this.state.total || this.state.percentageResult || "0"} />
+                )}
+                <PanelButton clickHandle={this.handleClick} />
+            </div>
         </div>
-      </div>
     );
   }
 
